@@ -7,9 +7,16 @@
 //
 
 #import "ViewController.h"
+#import "ZHXTabView.h"
+
+#define ScreenWidth     [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight     [UIScreen mainScreen].bounds.size.height
 
 @interface ViewController ()
-
+{
+    UITableView  * _tableView;
+}
+@property (nonatomic, strong) ZHXTabView *firstTabView;
 @end
 
 @implementation ViewController
@@ -19,16 +26,21 @@
     
     self.navigationItem.title = @"ZHXTabView";
     self.view.backgroundColor = [UIColor whiteColor];
+
+    [self setUpView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setUpView {
+    NSArray *titles = @[@"欧洲",@"亚洲",@"大洋洲",@"北美洲"];
+//    self.firstTabView = [[ZHXTabView alloc]initWithFrame:CGRectMake(50, 200, ScreenWidth -100, 60) titles:titles];
+     self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
+    [self.view addSubview:self.firstTabView];
+    self.firstTabView.frame = CGRectMake(20, 200, ScreenWidth -40, 60);
+    self.firstTabView.backgroundColor = [UIColor cyanColor];
+    
+    self.firstTabView.leftPadding = 10;
+    self.firstTabView.rightPadding = 10;
 }
-*/
+
 
 @end

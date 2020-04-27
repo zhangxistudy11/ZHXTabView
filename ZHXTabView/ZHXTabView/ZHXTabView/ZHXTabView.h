@@ -27,7 +27,19 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 
 @property (nonatomic, strong) UIFont * itemTextFont;///item text font.default systemFontOfSize:17
 
-@property (nonatomic, assign) CGFloat itemLineHeight;///<item line height. Default is 4
+@property (nonatomic, assign) CGFloat itemLineHeight;///<item line height. Default is 3
+
+@property (nonatomic, assign) CGFloat itemLineWidth;///<item line height. Default is 25
+
+@property (nonatomic, strong) UIColor * itemLineColor;///< bottom line color . Default is [UIColor purpleColor]
+
+@property (nonatomic, assign) CGFloat itemLineCornerRadius;/// bottom line  cornerRadius . Default is 1.5 .
+
+/// Sets the location of the selected item by default
+/// @param defaultIndex index .Default index is 0.
+- (void)setDefultSelectedIndex:(NSInteger)defaultIndex;
+
+
 
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles;
 /**
@@ -47,10 +59,6 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 
 
 
-/**
- 指定选中位置  默认为 0
- */
-@property (nonatomic,assign) NSInteger selectIndex;
 
 /**
  *  单个item背景色,默认白色

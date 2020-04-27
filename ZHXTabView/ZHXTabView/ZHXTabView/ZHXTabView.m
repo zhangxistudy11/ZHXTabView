@@ -9,14 +9,17 @@
 #import "ZHXTabView.h"
 #import "UIView+Extension.h"
 #import "ZHXTabItemView.h"
+
+static NSInteger const kDefaultTagOffset = 10000;
+
 @interface ZHXTabView()
 
 @property (nonatomic, strong) NSArray *titles;
 
-@property (nonatomic,strong) UIView *contentView;
-@property (nonatomic, strong) UIView *line;
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic, strong) NSMutableArray<ZHXTabItemView *> *itemViewArray;
-
+@property (nonatomic, assign) NSInteger selectIndex;
 @end
 
 @implementation ZHXTabView
@@ -26,22 +29,18 @@
         self.itemViewArray = [[NSMutableArray alloc]init];
         self.titles = titles;
         self.itemHeight = 40;
-        self.itemPadding = 3;
-        self.itemLineHeight = 4;
+        self.itemPadding = 5;
+        self.itemLineHeight = 3;
+        self.itemLineWidth = 25;
         self.itemTextHeight = 20;
+        self.selectIndex = 3;
         self.itemTextFont = [UIFont systemFontOfSize:15];
+        self.itemLineColor = [UIColor purpleColor];
+        self.itemLineCornerRadius = 1.5;
         [self setupViews];
     }
     return self;
 }
-//- (instancetype)init
-//{
-//    self = [super init];
-//    if (self) {
-//        [self setupViews];
-//    }
-//    return self;
-//}
 #pragma mark - UI Methods
 - (void)setupViews {
     
@@ -51,8 +50,12 @@
         ZHXTabItemView *itemView = [[ZHXTabItemView alloc]init];
         [self addSubview:itemView];
         [self.itemViewArray addObject:itemView];
+        itemView.tag = kDefaultTagOffset+i;
         itemView.label.text = title;
+        [itemView addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
     }
+    self.bottomLine = [[UIView alloc]init];
+    [self addSubview:self.bottomLine];
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -67,12 +70,41 @@
         itemView.label.frame = CGRectMake((itemWidth-textWidth)/2, itemHeight-self.itemPadding-self.itemLineHeight-self.itemTextHeight, textWidth, self.itemTextHeight);
         itemView.label.text = title;
         itemView.label.backgroundColor = [UIColor yellowColor];
-//        itemView.badge.frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
-        
+
         itemX += itemWidth;
     }
+    ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:self.selectIndex];
+    float lineX = CGRectGetMinX(itemView.frame)+(itemWidth-self.itemLineWidth)/2;
+    self.bottomLine.frame = CGRectMake(lineX, self.height-self.itemLineHeight, self.itemLineWidth, self.itemLineHeight);
+    self.bottomLine.backgroundColor = self.itemLineColor;
+    self.bottomLine.layer.cornerRadius = MAX(self.itemLineHeight/2, self.itemLineCornerRadius);
+    
 }
-
+#pragma mark - Event Methods
+- (void)clickItem:(UIControl *)sender {
+    UIControl *control = sender;
+    if (control.selected) {
+        return;
+    }
+    NSInteger tag = control.tag;
+    self.selectIndex = tag-kDefaultTagOffset;
+    ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:self.selectIndex];
+    float lineX = CGRectGetMinX(itemView.frame)+(itemView.width-self.itemLineWidth)/2;
+    self.bottomLine.alpha = 0.2;
+    [UIView animateWithDuration:0.17 animations:^{
+        self.bottomLine.x = lineX;
+    } completion:^(BOOL finished) {
+        self.bottomLine.alpha = 1.0;
+    }];;
+}
+#pragma mark - Public Methods
+- (void)setDefultSelectedIndex:(NSInteger)defaultIndex {
+    if (defaultIndex<0) {
+        return;
+    }
+    self.selectIndex = defaultIndex;
+    
+}
 #pragma mark - Private Methods
 - (CGFloat)contentWidth {
     return self.frame.size.width;
@@ -99,31 +131,7 @@
 - (void)setRightPadding:(CGFloat)rightPadding{
     _rightPadding = rightPadding;
 }
-- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        NSLog(@"fffffffff");
-        
-        //要先初始化view
-        [self initView];
-        NSLog(@"0000");
-        
-        self.titles = titles;
-        NSLog(@"1111");
-    }
-    return self;
-}
-- (void)initView{
-    /*
-     self.horizontalMargin = 0;
-     self.fontSize = 14;
-     self.lineColor = [UIColor blackColor];
-     */
-    NSLog(@"ddd1");
-    
-    //    [self setUpView];
-}
+
 
 
 @end

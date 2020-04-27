@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZHXTabItemView : UIControl
 @property (nonatomic,strong) UILabel *label;
-@property (nonatomic,strong) UIButton  *badge;
 @end
 
 NS_ASSUME_NONNULL_END

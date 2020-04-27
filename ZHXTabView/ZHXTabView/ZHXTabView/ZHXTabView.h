@@ -13,7 +13,7 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 
 @interface ZHXTabView : UIView
 
-- (instancetype)initWithTitles:(NSArray *)titles;
+
 
 @property (nonatomic, assign) CGFloat leftPadding;///<left inner margin
 
@@ -25,7 +25,15 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 
 @property (nonatomic, assign) CGFloat itemTextHeight;///<item text heihgt.Default is 20
 
+@property (nonatomic, strong) UIColor * itemBackgroundColor;///item backgroundColor.default [UIColor clearColor]
+
 @property (nonatomic, strong) UIFont * itemTextFont;///item text font.default systemFontOfSize:17
+
+@property (nonatomic, strong) UIColor * itemTextColor;///item text cololr.default [UIColor blackColor]
+
+@property (nonatomic, strong) UIFont * itemSelectedTextFont;///item text font when is selected.default  boldSystemFontOfSize:17
+
+@property (nonatomic, strong) UIColor * itemSelectedTextColor;///item text cololr when is selected.default [UIColor purpleColor]
 
 @property (nonatomic, assign) CGFloat itemLineHeight;///<item line height. Default is 3
 
@@ -35,65 +43,17 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 
 @property (nonatomic, assign) CGFloat itemLineCornerRadius;/// bottom line  cornerRadius . Default is 1.5 .
 
+
+/// Initialization method
+/// @param titles titles array
+- (instancetype)initWithTitles:(NSArray <NSString *> *)titles;
+
 /// Sets the location of the selected item by default
 /// @param defaultIndex index .Default index is 0.
 - (void)setDefultSelectedIndex:(NSInteger)defaultIndex;
 
 
 
-- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles;
-/**
- 水平方向两边的间距 默认为0
- */
-@property (nonatomic,assign) float horizontalMargin;
-
-/**
- 顶部的间距 默认为0
- */
-@property (nonatomic,assign) float topMargin;
-/**
- 底部的间距 默认为0
- */
-@property (nonatomic,assign) float bottomMargin;
-
-
-
-
-
-/**
- *  单个item背景色,默认白色
- */
-@property (nonatomic,strong)UIColor *itemBackColor;
-
-/**
- 字体字号 默认14号
- */
-@property (nonatomic,assign) float fontSize;
-
-/**
- *  底部移动线条颜色
- */
-@property (nonatomic,strong)UIColor *lineColor;
-
-/**
- 横线相对文字长度内缩举例 默认线为20
- */
-@property (nonatomic,assign) float linePadding;
-
-/**
- *  默认字体颜色
- */
-@property (nonatomic,strong)UIColor *itemColor;
-
-/**
- *  选中颜色
- */
-@property (nonatomic,strong)UIColor *itemSelctedColor;
-
-/**
- 选中位置后回调
- */
-@property (nonatomic,copy) IndexChangeBlock indexChangeBlock;
 
 /**
  显示右上角图标提示

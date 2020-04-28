@@ -128,7 +128,10 @@ static NSInteger const kDefaultTagOffset = 10000;
         self.bottomLine.x = lineX;
     } completion:^(BOOL finished) {
         self.bottomLine.alpha = 1.0;
-    }];;
+    }];
+    if ([self.delegate respondsToSelector:@selector(tabView:didSelectItemAtIndex:)]) {
+        [self.delegate tabView:self didSelectItemAtIndex:self.selectIndex];
+    }
 }
 #pragma mark - Public Methods
 - (void)configDefultSelectedIndex:(NSInteger)defaultIndex {

@@ -9,13 +9,19 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-typedef void (^IndexChangeBlock)(NSInteger index);
+@class ZHXTabView;
+@protocol ZHXTabViewDelegate <NSObject>
+@required
+
+- (void)tabView:(ZHXTabView *)tabView didSelectItemAtIndex:(NSInteger)index;
+
+@end
 @interface ZHXBadgeView : UIView
 
 @end
 @interface ZHXTabView : UIView
 
-
+@property (nonatomic, weak) id<ZHXTabViewDelegate> delegate;///<delegate of tabView
 
 @property (nonatomic, assign) CGFloat leftPadding;///<left inner margin
 

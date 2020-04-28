@@ -21,6 +21,12 @@
 @property (nonatomic, strong) UILabel *firstResultLB;
 @property (nonatomic, strong) UILabel *firstIndexLB;
 
+
+@property (nonatomic, strong) ZHXTabView *secondTabView;
+@property (nonatomic, strong) UILabel *secondTitleLB;
+@property (nonatomic, strong) UILabel *secondResultLB;
+@property (nonatomic, strong) UILabel *secondIndexLB;
+
 @end
 
 @implementation ViewController
@@ -32,43 +38,79 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self addFirstDemo];
-    
+    [self addSecondDemo];
 }
-
-- (void)addFirstDemo {
-    NSArray *titles = @[@"Asian",@"Europe",@"Antarctica",@"Africa"];
-    self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
-    [self.view addSubview:self.firstTabView];
-    self.firstTabView.frame = CGRectMake(20, 160, ScreenWidth -40, 50);
-    self.firstTabView.backgroundColor = [UIColor yellowColor];
-    self.firstTabView.delegate = self;
+- (void)addFirstDemo{
+     NSArray *titles = @[@"Asian",@"Europe",@"Antarctica",@"Africa"];
+       self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
+       [self.view addSubview:self.firstTabView];
+       self.firstTabView.frame = CGRectMake(20, 150, ScreenWidth -40, 50);
+//       self.firstTabView.backgroundColor = [UIColor cyanColor];
+       self.firstTabView.delegate = self;
+       
+       self.firstTabView.leftPadding = 10;
+       self.firstTabView.rightPadding = 10;
+       self.firstTabView.itemLineColor = [UIColor blueColor];
+       self.firstTabView.itemSelectedTextColor = [UIColor blueColor];
+       
+       self.firstTitleLB = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMinY(self.firstTabView.frame)-60, ScreenWidth -40, 60)];
+       [self.view addSubview:self.firstTitleLB];
+       self.firstTitleLB.textAlignment = NSTextAlignmentLeft;
+       self.firstTitleLB.font = [UIFont boldSystemFontOfSize:18];
+       self.firstTitleLB.textColor = [UIColor blackColor];
+       self.firstTitleLB.text = @"Demo One : Basic Usage ";
+       
+       self.firstResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstTabView.frame)+10, self.firstTabView.frame.size.width-65, 60)];
+       [self.view addSubview:self.firstResultLB];
+       self.firstResultLB.textAlignment = NSTextAlignmentRight;
+       self.firstResultLB.font = [UIFont systemFontOfSize:14];
+       self.firstResultLB.textColor = [UIColor blackColor];
+       self.firstResultLB.text = @"The location index you currently selected is : ";
+       
+       
+       self.firstIndexLB = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.firstResultLB.frame), CGRectGetMaxY(self.firstTabView.frame)+10, 35, 60)];
+       [self.view addSubview:self.firstIndexLB];
+       self.firstIndexLB.textAlignment = NSTextAlignmentLeft;
+       self.firstIndexLB.font = [UIFont boldSystemFontOfSize:20];
+       self.firstIndexLB.textColor = [UIColor redColor];
+       self.firstIndexLB.text = [NSString stringWithFormat:@"%d",0];
+       
+       
+}
+- (void)addSecondDemo {
+    NSArray *titles = @[@"男装",@"女装",@"童装",@"工装"];
+    self.secondTabView = [[ZHXTabView alloc]initWithTitles:titles];
+    [self.view addSubview:self.secondTabView];
+    self.secondTabView.frame = CGRectMake(20, 400, ScreenWidth -40, 50);
+    self.secondTabView.backgroundColor = [UIColor lightGrayColor];
+    self.secondTabView.delegate = self;
     
-    self.firstTabView.leftPadding = 10;
-    self.firstTabView.rightPadding = 10;
-    self.firstTabView.itemLineColor = [UIColor blueColor];
-    self.firstTabView.itemSelectedTextColor = [UIColor blueColor];
+    self.secondTabView.leftPadding = 10;
+    self.secondTabView.rightPadding = 10;
+    self.secondTabView.itemLineColor = [UIColor blueColor];
+    self.secondTabView.itemSelectedTextColor = [UIColor blueColor];
     
-    self.firstTitleLB = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMinY(self.firstTabView.frame)-60, ScreenWidth -40, 60)];
-    [self.view addSubview:self.firstTitleLB];
-    self.firstTitleLB.textAlignment = NSTextAlignmentLeft;
-    self.firstTitleLB.font = [UIFont boldSystemFontOfSize:18];
-    self.firstTitleLB.textColor = [UIColor blackColor];
-    self.firstTitleLB.text = @"Demo One : Basic Usage ";
+    self.secondTitleLB = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMinY(self.secondTabView.frame)-60, ScreenWidth -40, 60)];
+    [self.view addSubview:self.secondTitleLB];
+    self.secondTitleLB.textAlignment = NSTextAlignmentLeft;
+    self.secondTitleLB.font = [UIFont boldSystemFontOfSize:18];
+    self.secondTitleLB.textColor = [UIColor blackColor];
+    self.secondTitleLB.text = @"Demo Two : Custom Badge ";
     
-    self.firstResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstTabView.frame)+10, self.firstTabView.frame.size.width-65, 60)];
-    [self.view addSubview:self.firstResultLB];
-    self.firstResultLB.textAlignment = NSTextAlignmentRight;
-    self.firstResultLB.font = [UIFont systemFontOfSize:14];
-    self.firstResultLB.textColor = [UIColor blackColor];
-    self.firstResultLB.text = @"The location index you currently selected is : ";
+    self.secondResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.secondTabView.frame)+10, self.secondTabView.frame.size.width-65, 60)];
+    [self.view addSubview:self.secondResultLB];
+    self.secondResultLB.textAlignment = NSTextAlignmentRight;
+    self.secondResultLB.font = [UIFont systemFontOfSize:14];
+    self.secondResultLB.textColor = [UIColor blackColor];
+    self.secondResultLB.text = @"The location index you currently selected is : ";
     
     
-    self.firstIndexLB = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.firstResultLB.frame), CGRectGetMaxY(self.firstTabView.frame)+10, 35, 60)];
-    [self.view addSubview:self.firstIndexLB];
-    self.firstIndexLB.textAlignment = NSTextAlignmentLeft;
-    self.firstIndexLB.font = [UIFont boldSystemFontOfSize:20];
-    self.firstIndexLB.textColor = [UIColor redColor];
-    self.firstIndexLB.text = [NSString stringWithFormat:@"%d",0];
+    self.secondIndexLB = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.secondResultLB.frame), CGRectGetMaxY(self.secondTabView.frame)+10, 35, 60)];
+    [self.view addSubview:self.secondIndexLB];
+    self.secondIndexLB.textAlignment = NSTextAlignmentLeft;
+    self.secondIndexLB.font = [UIFont boldSystemFontOfSize:20];
+    self.secondIndexLB.textColor = [UIColor redColor];
+    self.secondIndexLB.text = [NSString stringWithFormat:@"%d",0];
     
     ZHXBadgeView *badgeOne = [[ZHXBadgeView alloc]initWithFrame:CGRectMake(0, 0, 15, 15)];
     UILabel *hotBadge = [[UILabel alloc]initWithFrame:badgeOne.bounds];
@@ -81,7 +123,7 @@
     hotBadge.text = @"3";
     hotBadge.textColor = [UIColor whiteColor];
     
-    [self.firstTabView configBadge:badgeOne atIndex:2 badgeSize:CGSizeMake(15, 15) topOffsetFromTextTop:-7 rightOffsetFormTextRight:-11];
+    [self.secondTabView configBadge:badgeOne atIndex:1 badgeSize:CGSizeMake(15, 15) topOffsetFromTextTop:-10 rightOffsetFormTextRight:-8];
     
     ZHXBadgeView *badgeTwo = [[ZHXBadgeView alloc]initWithFrame:CGRectMake(0, 0, 25, 12)];
     UILabel *recBadge = [[UILabel alloc]initWithFrame:badgeTwo.bounds];
@@ -98,7 +140,7 @@
     shapeLayer.path = path.CGPath;
     recBadge.layer.mask = shapeLayer;
     
-    [self.firstTabView configBadge:badgeTwo atIndex:3 badgeSize:CGSizeMake(25, 12) topOffsetFromTextTop:-7 rightOffsetFormTextRight:-10];
+    [self.secondTabView configBadge:badgeTwo atIndex:3 badgeSize:CGSizeMake(25, 12) topOffsetFromTextTop:-10 rightOffsetFormTextRight:-10];
     
 
 }
@@ -106,7 +148,8 @@
 - (void)tabView:(ZHXTabView *)tabView didSelectItemAtIndex:(NSInteger)index{
     if (tabView == self.firstTabView) {
         self.firstIndexLB.text = [NSString stringWithFormat:@"%ld",(long)index];
-        
+    }else if (tabView == self.secondTabView){
+        self.secondIndexLB.text = [NSString stringWithFormat:@"%ld",(long)index];
     }
 }
 

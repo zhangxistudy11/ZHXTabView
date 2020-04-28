@@ -82,10 +82,11 @@ static NSInteger const kDefaultTagOffset = 10000;
             itemView.label.font = self.itemTextFont;
             itemView.label.textColor = self.itemTextColor;
         }
-       
+        itemView.backgroundColor = RandomColor;
         itemView.label.backgroundColor = [UIColor cyanColor];
         itemX += itemWidth;
     }
+
     ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:self.selectIndex];
     float lineX = CGRectGetMinX(itemView.frame)+(itemWidth-self.itemLineWidth)/2;
     self.bottomLine.frame = CGRectMake(lineX, self.height-self.itemLineHeight, self.itemLineWidth, self.itemLineHeight);
@@ -122,6 +123,22 @@ static NSInteger const kDefaultTagOffset = 10000;
         return;
     }
     self.selectIndex = defaultIndex;
+    
+}
+- (void)setBadge:(UIView *)badgeView atIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset {
+    if (badgeView == nil || index>=self.titles.count) {
+        return;
+    }
+    [self updateSubView];
+    
+    ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:index];
+    NSString *title = [self.titles objectAtIndex:index];
+    float itemWidth = [self itemWidth];
+    float textWidth = MIN(itemWidth, [self textWidthWithStr:title]);
+    float itemHeight = MIN(self.itemHeight, self.height);
+
+    badgeView.frame = CGRectMake((itemWidth-textWidth)/2+textWidth+rightOffset, itemHeight-self.itemPadding-self.itemLineHeight-self.itemTextHeight+topOffset, size.width, size.height);
+    [itemView addSubview:badgeView];
     
 }
 #pragma mark - Private Methods

@@ -57,9 +57,9 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 /// @param badgeView custom badge
 /// @param index position index
 /// @param size badgeView size
-/// @param topOffset the distance to the top of the text can be negative
-/// @param rightOffset the distance to the right of the text can be negative
-- (void)setBadge:(UIView *)badgeView AtIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset;
+/// @param topOffset Badge's top can be negative relative to the spacing above the text
+/// @param rightOffset The spacing on the left side of the badge relative to the right side of the text can be negative
+- (void)setBadge:(UIView *)badgeView atIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset;
 
 
 

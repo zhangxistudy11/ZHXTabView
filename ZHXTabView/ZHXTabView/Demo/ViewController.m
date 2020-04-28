@@ -32,17 +32,27 @@
 
 - (void)setUpView {
     NSArray *titles = @[@"欧洲",@"亚洲",@"大洋洲",@"北美洲"];
-//    self.firstTabView = [[ZHXTabView alloc]initWithFrame:CGRectMake(50, 200, ScreenWidth -100, 60) titles:titles];
-     self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
+    self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
     [self.view addSubview:self.firstTabView];
     self.firstTabView.frame = CGRectMake(20, 200, ScreenWidth -40, 60);
-//    self.firstTabView.backgroundColor = [UIColor cyanColor];
     
     self.firstTabView.leftPadding = 10;
     self.firstTabView.rightPadding = 10;
     
     self.firstTabView.itemLineColor = [UIColor blueColor];
     self.firstTabView.itemSelectedTextColor = [UIColor blueColor];
+    
+    UILabel *hotBadge = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 15, 15)];
+    hotBadge.backgroundColor = [UIColor redColor];
+    hotBadge.textAlignment = NSTextAlignmentCenter;
+    hotBadge.font = [UIFont systemFontOfSize:10];
+    hotBadge.layer.cornerRadius = 7.5;
+    hotBadge.clipsToBounds = YES;
+    hotBadge.text = @"3";
+    hotBadge.textColor = [UIColor whiteColor];
+    
+    [self.firstTabView setBadge:hotBadge atIndex:2 badgeSize:CGSizeMake(15, 15) topOffsetFromTextTop:-6 rightOffsetFormTextRight:-6];
+    
 }
 
 

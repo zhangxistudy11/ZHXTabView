@@ -32,14 +32,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self addFirstDemo];
+    
 }
 
 - (void)addFirstDemo {
     NSArray *titles = @[@"Asian",@"Europe",@"Antarctica",@"Africa"];
     self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
     [self.view addSubview:self.firstTabView];
-    self.firstTabView.frame = CGRectMake(20, 150, ScreenWidth -40, 50);
-    self.firstTabView.backgroundColor = [UIColor whiteColor];
+    self.firstTabView.frame = CGRectMake(20, 160, ScreenWidth -40, 50);
+    self.firstTabView.backgroundColor = [UIColor yellowColor];
     self.firstTabView.delegate = self;
     
     self.firstTabView.leftPadding = 10;
@@ -47,29 +48,26 @@
     self.firstTabView.itemLineColor = [UIColor blueColor];
     self.firstTabView.itemSelectedTextColor = [UIColor blueColor];
     
-    self.firstTitleLB = [[UILabel alloc]initWithFrame:CGRectMake(40, 100, self.firstTabView.frame.size.width-65, 60)];
+    self.firstTitleLB = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMinY(self.firstTabView.frame)-60, ScreenWidth -40, 60)];
+    [self.view addSubview:self.firstTitleLB];
+    self.firstTitleLB.textAlignment = NSTextAlignmentLeft;
+    self.firstTitleLB.font = [UIFont boldSystemFontOfSize:18];
+    self.firstTitleLB.textColor = [UIColor blackColor];
+    self.firstTitleLB.text = @"Demo One : Basic Usage ";
+    
+    self.firstResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstTabView.frame)+10, self.firstTabView.frame.size.width-65, 60)];
     [self.view addSubview:self.firstResultLB];
     self.firstResultLB.textAlignment = NSTextAlignmentRight;
     self.firstResultLB.font = [UIFont systemFontOfSize:14];
     self.firstResultLB.textColor = [UIColor blackColor];
-    self.firstResultLB.backgroundColor = [UIColor lightGrayColor];
-    self.firstResultLB.text = @"The location index you currently selected is : ";
-    
-    self.firstResultLB = [[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(self.firstTabView.frame)+30, self.firstTabView.frame.size.width-65, 60)];
-    [self.view addSubview:self.firstResultLB];
-    self.firstResultLB.textAlignment = NSTextAlignmentRight;
-    self.firstResultLB.font = [UIFont systemFontOfSize:14];
-    self.firstResultLB.textColor = [UIColor blackColor];
-    self.firstResultLB.backgroundColor = [UIColor lightGrayColor];
     self.firstResultLB.text = @"The location index you currently selected is : ";
     
     
-    self.firstIndexLB = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.firstResultLB.frame), CGRectGetMaxY(self.firstTabView.frame)+30, 35, 60)];
+    self.firstIndexLB = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.firstResultLB.frame), CGRectGetMaxY(self.firstTabView.frame)+10, 35, 60)];
     [self.view addSubview:self.firstIndexLB];
     self.firstIndexLB.textAlignment = NSTextAlignmentLeft;
     self.firstIndexLB.font = [UIFont boldSystemFontOfSize:20];
     self.firstIndexLB.textColor = [UIColor redColor];
-    self.firstIndexLB.backgroundColor = [UIColor lightGrayColor];
     self.firstIndexLB.text = [NSString stringWithFormat:@"%d",0];
     
     ZHXBadgeView *badgeOne = [[ZHXBadgeView alloc]initWithFrame:CGRectMake(0, 0, 15, 15)];
@@ -102,8 +100,7 @@
     
     [self.firstTabView configBadge:badgeTwo atIndex:3 badgeSize:CGSizeMake(25, 12) topOffsetFromTextTop:-7 rightOffsetFormTextRight:-10];
     
-    //    [self.firstTabView configBadgeHide:NO atIndex:2];
-    
+
 }
 #pragma mark - ZHXTabViewDelegate
 - (void)tabView:(ZHXTabView *)tabView didSelectItemAtIndex:(NSInteger)index{

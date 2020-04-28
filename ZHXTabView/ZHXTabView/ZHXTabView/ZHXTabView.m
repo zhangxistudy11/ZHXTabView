@@ -14,6 +14,11 @@
 
 static NSInteger const kDefaultTagOffset = 10000;
 
+
+@implementation ZHXBadgeView
+
+@end
+
 @interface ZHXTabView()
 
 @property (nonatomic, strong) NSArray *titles;
@@ -35,7 +40,7 @@ static NSInteger const kDefaultTagOffset = 10000;
         self.itemLineHeight = 3;
         self.itemLineWidth = 25;
         self.itemTextHeight = 20;
-        self.selectIndex = 3;
+        self.selectIndex = 0;
         self.itemTextFont = [UIFont systemFontOfSize:17];
         self.itemTextColor = [UIColor blackColor];
         self.itemLineColor = [UIColor purpleColor];
@@ -82,16 +87,24 @@ static NSInteger const kDefaultTagOffset = 10000;
             itemView.label.font = self.itemTextFont;
             itemView.label.textColor = self.itemTextColor;
         }
-        itemView.backgroundColor = RandomColor;
-        itemView.label.backgroundColor = [UIColor cyanColor];
+//        itemView.backgroundColor = RandomColor;
+//        itemView.label.backgroundColor = [UIColor cyanColor];
         itemX += itemWidth;
+        for (UIView *subView in [itemView subviews]) {
+               if ([subView isKindOfClass:[ZHXBadgeView class]]) {
+                   [self bringSubviewToFront:itemView];
+                   break;
+               }
+           }
+       
     }
-
+    
     ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:self.selectIndex];
     float lineX = CGRectGetMinX(itemView.frame)+(itemWidth-self.itemLineWidth)/2;
     self.bottomLine.frame = CGRectMake(lineX, self.height-self.itemLineHeight, self.itemLineWidth, self.itemLineHeight);
     self.bottomLine.backgroundColor = self.itemLineColor;
     self.bottomLine.layer.cornerRadius = MAX(self.itemLineHeight/2, self.itemLineCornerRadius);
+
     
 }
 #pragma mark - Event Methods
@@ -107,8 +120,8 @@ static NSInteger const kDefaultTagOffset = 10000;
     NSInteger tag = control.tag;
     self.selectIndex = tag-kDefaultTagOffset;
     ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:self.selectIndex];
-     itemView.label.font = self.itemSelectedTextFont;
-     itemView.label.textColor = self.itemSelectedTextColor;
+    itemView.label.font = self.itemSelectedTextFont;
+    itemView.label.textColor = self.itemSelectedTextColor;
     float lineX = CGRectGetMinX(itemView.frame)+(itemView.width-self.itemLineWidth)/2;
     self.bottomLine.alpha = 0.2;
     [UIView animateWithDuration:0.17 animations:^{
@@ -118,28 +131,45 @@ static NSInteger const kDefaultTagOffset = 10000;
     }];;
 }
 #pragma mark - Public Methods
-- (void)setDefultSelectedIndex:(NSInteger)defaultIndex {
+- (void)configDefultSelectedIndex:(NSInteger)defaultIndex {
     if (defaultIndex<0) {
         return;
     }
     self.selectIndex = defaultIndex;
     
 }
-- (void)setBadge:(UIView *)badgeView atIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset {
-    if (badgeView == nil || index>=self.titles.count) {
+- (void)configBadge:(ZHXBadgeView *)badgeView atIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset {
+    if (badgeView == nil || index>=self.titles.count || index>=self.itemViewArray.count) {
         return;
     }
-    [self updateSubView];
     
     ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:index];
+    for (UIView *subView in [itemView subviews]) {
+        if ([subView isKindOfClass:[ZHXBadgeView class]]) {
+            [subView removeFromSuperview];
+        }
+    }
     NSString *title = [self.titles objectAtIndex:index];
     float itemWidth = [self itemWidth];
     float textWidth = MIN(itemWidth, [self textWidthWithStr:title]);
     float itemHeight = MIN(self.itemHeight, self.height);
-
+    
     badgeView.frame = CGRectMake((itemWidth-textWidth)/2+textWidth+rightOffset, itemHeight-self.itemPadding-self.itemLineHeight-self.itemTextHeight+topOffset, size.width, size.height);
     [itemView addSubview:badgeView];
+
     
+}
+- (void)configBadgeHide:(BOOL)isHide atIndex:(NSInteger)index {
+    if ( index>=self.titles.count || index>=self.itemViewArray.count) {
+        return;
+    }
+    ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:index];
+    for (UIView *subView in [itemView subviews]) {
+        if ([subView isKindOfClass:[ZHXBadgeView class]]) {
+            subView.hidden = isHide;
+            break;
+        }
+    }
 }
 #pragma mark - Private Methods
 - (CGFloat)contentWidth {
@@ -153,7 +183,7 @@ static NSInteger const kDefaultTagOffset = 10000;
 }
 - (float)textWidthWithStr:(NSString *)str {
     if (str) {
-        NSDictionary *dict = @{NSFontAttributeName:self.itemTextFont};
+        NSDictionary *dict = @{NSFontAttributeName:self.itemSelectedTextFont};
         CGSize textSize = CGSizeMake(0.0f, self.itemTextHeight);
         textSize = [str boundingRectWithSize:textSize options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:dict context:nil].size;
         return ceilf(textSize.width);

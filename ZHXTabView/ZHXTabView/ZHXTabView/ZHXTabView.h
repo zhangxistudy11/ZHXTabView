@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^IndexChangeBlock)(NSInteger index);
+@interface ZHXBadgeView : UIView
 
+@end
 @interface ZHXTabView : UIView
 
 
@@ -50,34 +52,23 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 
 /// Set the location of the selected item by default
 /// @param defaultIndex index .Default index is 0.
-- (void)setDefultSelectedIndex:(NSInteger)defaultIndex;
+- (void)configDefultSelectedIndex:(NSInteger)defaultIndex;
 
 
 /// Set the badge relative to, and give it relative to, the text above and to the right.If you have multiple badges ,you can set it multiple times.
-/// @param badgeView custom badge
+/// @param badgeView custom badge , need to inherit from ZHXBadgeView
 /// @param index position index
 /// @param size badgeView size
 /// @param topOffset Badge's top can be negative relative to the spacing above the text
 /// @param rightOffset The spacing on the left side of the badge relative to the right side of the text can be negative
-- (void)setBadge:(UIView *)badgeView atIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset;
+- (void)configBadge:(ZHXBadgeView *)badgeView atIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset;
 
 
 
-
-/**
- 显示右上角图标提示
-
- @param index 第几个tab，默认从0开始
- @param title 显示的文案
- @param badgeStyleDict 图标样式 非必传
- {
- @"backColor":@"#ffffff",默认橘黄色
- @"textColor":@"#ccccc",默认白色
- @"textSize":@(10) 默认10号
- }
- @
- */
-- (void)showBadgeAtIndex:(NSInteger)index title:(NSString *)title badgeStyle:(NSDictionary *)badgeStyleDict;
+/// Sets whether the specified location is marked hidden or displayed
+/// @param isHide hide
+/// @param index location
+- (void)configBadgeHide:(BOOL)isHide atIndex:(NSInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

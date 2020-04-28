@@ -10,6 +10,8 @@
 #import "UIView+Extension.h"
 #import "ZHXTabItemView.h"
 
+#define RandomColor [UIColor colorWithHue:( arc4random() % 256 / 256.0 ) saturation:( arc4random() % 128 / 256.0 ) + 0.5 brightness:( arc4random() % 128 / 256.0 ) + 0.5 alpha:1]
+
 static NSInteger const kDefaultTagOffset = 10000;
 
 @interface ZHXTabView()
@@ -54,6 +56,7 @@ static NSInteger const kDefaultTagOffset = 10000;
         itemView.tag = kDefaultTagOffset+i;
         itemView.label.text = title;
         [itemView addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
+        itemView.backgroundColor = RandomColor;
     }
     self.bottomLine = [[UIView alloc]init];
     [self addSubview:self.bottomLine];
@@ -80,6 +83,7 @@ static NSInteger const kDefaultTagOffset = 10000;
             itemView.label.textColor = self.itemTextColor;
         }
        
+        itemView.label.backgroundColor = [UIColor cyanColor];
         itemX += itemWidth;
     }
     ZHXTabItemView *itemView = [self.itemViewArray objectAtIndex:self.selectIndex];

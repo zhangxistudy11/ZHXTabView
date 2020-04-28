@@ -48,9 +48,18 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 /// @param titles titles array
 - (instancetype)initWithTitles:(NSArray <NSString *> *)titles;
 
-/// Sets the location of the selected item by default
+/// Set the location of the selected item by default
 /// @param defaultIndex index .Default index is 0.
 - (void)setDefultSelectedIndex:(NSInteger)defaultIndex;
+
+
+/// Set the badge relative to, and give it relative to, the text above and to the right.If you have multiple badges ,you can set it multiple times.
+/// @param badgeView custom badge
+/// @param index position index
+/// @param size badgeView size
+/// @param topOffset the distance to the top of the text can be negative
+/// @param rightOffset the distance to the right of the text can be negative
+- (void)setBadge:(UIView *)badgeView AtIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset;
 
 
 

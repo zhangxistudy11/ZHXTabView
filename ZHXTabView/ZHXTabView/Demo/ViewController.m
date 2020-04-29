@@ -53,7 +53,7 @@
     self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
     [self.view addSubview:self.firstTabView];
     self.firstTabView.frame = CGRectMake(20, 150, ScreenWidth -40, 50);
-    //       self.firstTabView.backgroundColor = [UIColor cyanColor];
+    self.firstTabView.backgroundColor = [UIColor cyanColor];
     self.firstTabView.delegate = self;
     
     self.firstTabView.leftPadding = 10;
@@ -66,7 +66,7 @@
     self.firstTitleLB.textAlignment = NSTextAlignmentLeft;
     self.firstTitleLB.font = [UIFont boldSystemFontOfSize:18];
     self.firstTitleLB.textColor = [UIColor blackColor];
-    self.firstTitleLB.text = @"Demo One : Basic Usage ";
+    self.firstTitleLB.text = @"1、Basic Usage Demo";
     
     self.firstResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstTabView.frame)+10, 100, 60)];
     [self.view addSubview:self.firstResultLB];
@@ -103,7 +103,7 @@
     self.secondTitleLB.textAlignment = NSTextAlignmentLeft;
     self.secondTitleLB.font = [UIFont boldSystemFontOfSize:18];
     self.secondTitleLB.textColor = [UIColor blackColor];
-    self.secondTitleLB.text = @"Demo Two : Custom Badge ";
+    self.secondTitleLB.text = @"2、Custom Badge Demo";
     
     self.secondResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.secondTabView.frame)+10, 180, 60)];
     [self.view addSubview:self.secondResultLB];
@@ -168,7 +168,7 @@
     self.thirdTitleLB.textAlignment = NSTextAlignmentLeft;
     self.thirdTitleLB.font = [UIFont boldSystemFontOfSize:18];
     self.thirdTitleLB.textColor = [UIColor blackColor];
-    self.thirdTitleLB.text = @"Demo Three : Custom Mask ";
+    self.thirdTitleLB.text = @"3、Custom Mask Demo";
     
     self.thirdResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.thirdTabView.frame)+10, self.thirdTabView.frame.size.width-65, 60)];
     [self.view addSubview:self.thirdResultLB];

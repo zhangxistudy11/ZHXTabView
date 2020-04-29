@@ -128,7 +128,7 @@
     hotBadge.font = [UIFont systemFontOfSize:10];
     hotBadge.layer.cornerRadius = 7.5;
     hotBadge.clipsToBounds = YES;
-    hotBadge.text = @"3";
+    hotBadge.text = @"2";
     hotBadge.textColor = [UIColor whiteColor];
     
     [self.secondTabView configBadge:badgeOne atIndex:1 badgeSize:CGSizeMake(15, 15) topOffsetFromTextTop:-10 rightOffsetFormTextRight:-8];

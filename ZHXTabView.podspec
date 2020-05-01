@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/zhangxistudy11/ZHXTabView", :tag => s.version }
 
   #VIP 开源库资源文件 （我自己总结：每个文件都要有自己的路径，尤其你想目录分的比较详细的话，更具体的说明，看图对比着再说）
-  s.source_files = 'ZHXTabView/ZHXTabView/*'
+  s.source_files = 'ZHXTabView/*.{h,m}'
 
 
   # 是否支持arc

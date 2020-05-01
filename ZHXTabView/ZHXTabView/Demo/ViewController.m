@@ -89,7 +89,7 @@
     self.secondArray = @[@"男装",@"女装",@"童装",@"工装"];
     self.secondTabView = [[ZHXTabView alloc]initWithTitles:self.secondArray];
     [self.view addSubview:self.secondTabView];
-    self.secondTabView.frame = CGRectMake(20, 400, ScreenWidth -40, 50);
+    self.secondTabView.frame = CGRectMake(20, 350, ScreenWidth -40, 50);
     self.secondTabView.backgroundColor = [UIColor lightGrayColor];
     self.secondTabView.delegate = self;
     
@@ -152,16 +152,22 @@
     
 }
 - (void)addThirdDemo{
-    NSArray *titles = @[@"Asian",@"Europe",@"Antarctica",@"Africa"];
+    NSArray *titles = @[@"Science",@"Mathematics",@"Nature"];
     self.thirdTabView = [[ZHXTabView alloc]initWithTitles:titles];
     [self.view addSubview:self.thirdTabView];
-    self.thirdTabView.frame = CGRectMake(20, 650, ScreenWidth -40, 50);
+    self.thirdTabView.frame = CGRectMake(20, 500, ScreenWidth -40, 40);
     self.thirdTabView.delegate = self;
+    self.thirdTabView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
     
     self.thirdTabView.leftPadding = 10;
     self.thirdTabView.rightPadding = 10;
-    self.thirdTabView.itemLineColor = [UIColor blueColor];
-    self.thirdTabView.itemSelectedTextColor = [UIColor blueColor];
+    self.thirdTabView.itemLineColor = [UIColor clearColor];
+    self.thirdTabView.itemTextColor = [UIColor whiteColor];
+    self.thirdTabView.itemTextFont = [UIFont systemFontOfSize:14];
+    self.thirdTabView.itemSelectedTextColor = [UIColor blackColor];
+    self.thirdTabView.itemSelectedTextFont = [UIFont boldSystemFontOfSize:14];
+    
+    
     
     self.thirdTitleLB = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMinY(self.thirdTabView.frame)-60, ScreenWidth -40, 60)];
     [self.view addSubview:self.thirdTitleLB];

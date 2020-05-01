@@ -16,7 +16,6 @@ A highly customizable tab for iOS .
 * [Install](#Install)
 * [Usage](#Usage)
 * [API](#API)
-* [References](#References)
 * [License](#License)
 
 # Background

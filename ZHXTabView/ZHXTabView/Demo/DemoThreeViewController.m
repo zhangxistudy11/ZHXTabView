@@ -17,9 +17,6 @@ static float const kCornerRadius = 6.0;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIView *backView;
 @property (nonatomic, strong) ZHXTabView *thirdTabView;
-@property (nonatomic, strong) UILabel *thirdTitleLB;
-@property (nonatomic, strong) UILabel *thirdResultLB;
-@property (nonatomic, strong) UILabel *thirdIndexLB;
 @property (nonatomic, strong) CAShapeLayer *trapezoidShapeLayer;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @end

@@ -28,11 +28,11 @@
     [self addFirstDemo];
 }
 - (void)addFirstDemo{
-    NSArray *titles = @[@"Asian",@"Europe",@"Antarctica",@"Africa"];
+    NSArray *titles = @[@"Asian",@"Europe",@"America",@"Africa"];
     self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
     [self.view addSubview:self.firstTabView];
     self.firstTabView.frame = CGRectMake(20, 150, ScreenWidth -40, 50);
-    self.firstTabView.backgroundColor = [UIColor cyanColor];
+//    self.firstTabView.backgroundColor = [UIColor cyanColor];
     self.firstTabView.delegate = self;
     
     self.firstTabView.leftPadding = 10;
@@ -40,12 +40,7 @@
     self.firstTabView.itemLineColor = [UIColor blueColor];
     self.firstTabView.itemSelectedTextColor = [UIColor blueColor];
     
-    self.firstTitleLB = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMinY(self.firstTabView.frame)-60, ScreenWidth -40, 60)];
-    [self.view addSubview:self.firstTitleLB];
-    self.firstTitleLB.textAlignment = NSTextAlignmentLeft;
-    self.firstTitleLB.font = [UIFont boldSystemFontOfSize:18];
-    self.firstTitleLB.textColor = [UIColor blackColor];
-    self.firstTitleLB.text = @"1、Basic Usage Demo";
+  
     
     self.firstResultLB = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstTabView.frame)+10, 100, 60)];
     [self.view addSubview:self.firstResultLB];

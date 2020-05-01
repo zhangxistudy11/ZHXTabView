@@ -32,9 +32,7 @@
     self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
     [self.view addSubview:self.firstTabView];
     self.firstTabView.frame = CGRectMake(20, 150, ScreenWidth -40, 50);
-//    self.firstTabView.backgroundColor = [UIColor cyanColor];
     self.firstTabView.delegate = self;
-    
     self.firstTabView.leftPadding = 10;
     self.firstTabView.rightPadding = 10;
     self.firstTabView.itemLineColor = [UIColor blueColor];

@@ -28,8 +28,10 @@ In daily development, we often encounter usage scenarios of segmented tabs. Diff
 
 basics：
 ![image](https://github.com/zhangxistudy11/ZHXTabView/blob/master/ZHXTabView/ZHXTabView/Resource/basic.gif)
+
 badge：
 ![image](https://github.com/zhangxistudy11/ZHXTabView/blob/master/ZHXTabView/ZHXTabView/Resource/badge.gif)
+
 mask:
 ![image](https://github.com/zhangxistudy11/ZHXTabView/blob/master/ZHXTabView/ZHXTabView/Resource/mask.gif)
 

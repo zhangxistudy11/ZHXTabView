@@ -45,7 +45,7 @@ Go to github to download ZHXTabView , drag the blue circle file in the screensho
 
 # Usage
 ---------------------------------------------------------
-####1. Basic use: Set ZHXTabView as the data source, and pay attention to implementing the proxy method.
+#### 1. Basic use: Set ZHXTabView as the data source, and pay attention to implementing the proxy method.
 ```
     NSArray *titles = @[@"Asian",@"Europe",@"America",@"Africa"];
     self.firstTabView = [[ZHXTabView alloc]initWithTitles:titles];
@@ -61,7 +61,7 @@ Go to github to download ZHXTabView , drag the blue circle file in the screensho
 - (void)tabView:(ZHXTabView *)tabView didSelectItemAtIndex:(NSInteger)index{
  }
 ```
-####2.Use with corner mark: In order to make the corner mark can be highly customized, the customized corner mark view needs to inherit ZHXBadgeView or be the object of ZHXBadgeView when it is used.
+#### 2.Use with corner mark: In order to make the corner mark can be highly customized, the customized corner mark view needs to inherit ZHXBadgeView or be the object of ZHXBadgeView when it is used.
 ```
     ZHXBadgeView *badgeOne = [[ZHXBadgeView alloc]initWithFrame:CGRectMake(0, 0, 15, 15)];
     UILabel *hotBadge = [[UILabel alloc]initWithFrame:badgeOne.bounds];
@@ -74,7 +74,7 @@ Go to github to download ZHXTabView , drag the blue circle file in the screensho
     hotBadge.text = @"2";
     hotBadge.textColor = [UIColor whiteColor];
 ```
-####At the same time, it is necessary to specify which index plus angle
+#### At the same time, it is necessary to specify which index plus angle
 
 ```
 /// Set the badge relative to, and give it relative to, the text above and to the right.If you have multiple badges ,you can set it multiple times.
@@ -85,7 +85,7 @@ Go to github to download ZHXTabView , drag the blue circle file in the screensho
 /// @param rightOffset The spacing on the left side of the badge relative to the right side of the text can be negative
 - (void)configBadge:(ZHXBadgeView *)badgeView atIndex:(NSInteger)index  badgeSize:(CGSize)size topOffsetFromTextTop:(CGFloat)topOffset  rightOffsetFormTextRight:(CGFloat)rightOffset;
 ```
-####3.With a mask, you need to implement it through CAShapeLayer and UIBezierPath. For specific use, please refer to the code in the Demo, pay attention to the correct setting of the view level, and excessive animation at the bottom of the mask.
+#### 3.With a mask, you need to implement it through CAShapeLayer and UIBezierPath. For specific use, please refer to the code in the Demo, pay attention to the correct setting of the view level, and excessive animation at the bottom of the mask.
 
  # API
 ---------------------------------------------------------

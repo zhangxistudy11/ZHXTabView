@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33D468F2245BC5280074A33F /* DemoOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D468F1245BC5280074A33F /* DemoOneController.m */; };
+		33D468F5245BC53B0074A33F /* DemoTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D468F4245BC53B0074A33F /* DemoTwoViewController.m */; };
+		33D468F8245BC54E0074A33F /* DemoThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D468F7245BC54E0074A33F /* DemoThreeViewController.m */; };
 		7766775024552ECF00F000B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7766774F24552ECF00F000B4 /* AppDelegate.m */; };
 		7766775324552ECF00F000B4 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7766775224552ECF00F000B4 /* SceneDelegate.m */; };
 		7766775B24552ED300F000B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7766775A24552ED300F000B4 /* Assets.xcassets */; };
@@ -19,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33D468F0245BC5280074A33F /* DemoOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoOneController.h; sourceTree = "<group>"; };
+		33D468F1245BC5280074A33F /* DemoOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoOneController.m; sourceTree = "<group>"; };
+		33D468F3245BC53B0074A33F /* DemoTwoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoTwoViewController.h; sourceTree = "<group>"; };
+		33D468F4245BC53B0074A33F /* DemoTwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTwoViewController.m; sourceTree = "<group>"; };
+		33D468F6245BC54E0074A33F /* DemoThreeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoThreeViewController.h; sourceTree = "<group>"; };
+		33D468F7245BC54E0074A33F /* DemoThreeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoThreeViewController.m; sourceTree = "<group>"; };
 		7766774B24552ECF00F000B4 /* ZHXTabView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHXTabView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7766774E24552ECF00F000B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7766774F24552ECF00F000B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -88,6 +97,12 @@
 			children = (
 				776677682455354D00F000B4 /* ViewController.h */,
 				776677692455354D00F000B4 /* ViewController.m */,
+				33D468F0245BC5280074A33F /* DemoOneController.h */,
+				33D468F1245BC5280074A33F /* DemoOneController.m */,
+				33D468F3245BC53B0074A33F /* DemoTwoViewController.h */,
+				33D468F4245BC53B0074A33F /* DemoTwoViewController.m */,
+				33D468F6245BC54E0074A33F /* DemoThreeViewController.h */,
+				33D468F7245BC54E0074A33F /* DemoThreeViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -181,12 +196,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33D468F5245BC53B0074A33F /* DemoTwoViewController.m in Sources */,
 				7766778D24557BFB00F000B4 /* ZHXTabView.m in Sources */,
+				33D468F2245BC5280074A33F /* DemoOneController.m in Sources */,
 				7766775024552ECF00F000B4 /* AppDelegate.m in Sources */,
 				776677972455A09200F000B4 /* ZHXTabItemView.m in Sources */,
 				7766779B2455A23E00F000B4 /* UIView+Extension.m in Sources */,
 				7766776124552ED300F000B4 /* main.m in Sources */,
 				7766775324552ECF00F000B4 /* SceneDelegate.m in Sources */,
+				33D468F8245BC54E0074A33F /* DemoThreeViewController.m in Sources */,
 				7766776A2455354D00F000B4 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

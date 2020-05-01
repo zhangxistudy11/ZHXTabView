@@ -19,3 +19,18 @@ A highly customizable tab for iOS .
 * [References](#References)
 * [License](#License)
 
+# Background
+---------------------------------------------------------
+In daily development, we often encounter usage scenarios of segmented tabs. Different scenes have different needs, some need to be animated, some need to have corner marks, and some need to mask animation. Here will provide a comprehensive ZHXTabView to meet the above needs.
+
+# DisplayEffect
+---------------------------------------------------------
+
+basics：
+![image](https://github.com/zhangxistudy11/ZHXTabView/blob/master/ZHXTabView/ZHXTabView/Resource/basic.gif)
+badge：
+![image](https://github.com/zhangxistudy11/ZHXTabView/blob/master/ZHXTabView/ZHXTabView/Resource/badge.gif)
+mask:
+![image](https://github.com/zhangxistudy11/ZHXTabView/blob/master/ZHXTabView/ZHXTabView/Resource/mask.gif)
+
+

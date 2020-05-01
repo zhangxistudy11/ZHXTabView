@@ -9,3 +9,13 @@
 A highly customizable tab for iOS .
 
 [中文文档地址](https://www.jianshu.com/p/d55b74949555)
+# Table of Contents
+---------------------------------------------------------
+* [Background](#Background)
+* [DisplayEffect](#DisplayEffect)
+* [Install](#Install)
+* [Usage](#Usage)
+* [API](#API)
+* [References](#References)
+* [License](#License)
+
